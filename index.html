@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Viti Showcase and Skills Fair 2026</title>
+  <meta name="description" content="A one-day fair where students show what they can make, build and solve.">
+
+  <style>
+    :root {
+      --bg: #eef4f7;          /* page background */
+      --surface: #f9fcfd;     /* cards and the programme section */
+      --ink: #12242d;         /* main text */
+      --muted: #43606b;       /* softer text */
+      --primary: #0b5878;     /* buttons and highlights */
+      --accent: #1c6aa3;      /* small details and stripes */
+      --line: #c7d8e1;        /* borders */
+      --on-primary: #f4fbfd;  /* text that sits on a primary-coloured button */
+
+      --font-heading: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+      --font-body: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      --page-width: 1100px;
+    }
+
+    /* Dark theme: used automatically when the device is in dark mode */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d1a23;
+        --surface: #142630;
+        --ink: #e6f1f6;
+        --muted: #a8bec9;
+        --primary: #6cc8e2;
+        --accent: #82b9f2;
+        --line: #28414f;
+        --on-primary: #0b2a2b;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 4.5rem);  /* stops the sticky header covering jump targets */
+    }
+
+    body {
+      margin: 0;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+      background: var(--bg);
+      color: var(--ink);
+      font: 400 1.0625rem/1.65 var(--font-body);
+    }
+
+    a { color: inherit; }
+
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* Skip link: only visible to keyboard users */
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -4rem;
+      z-index: 30;
+      padding: .6rem 1rem;
+      background: var(--ink);
+      color: var(--bg);
+    }
+    .skip-link:focus { top: .5rem; }
+
+
+    /* ==========================================================
+       3. HEADER AND NAVIGATION
+       ========================================================== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      width: min(var(--page-width), 100% - 2.5rem);
+      margin-inline: auto;
+      min-height: 3.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .header-logo {
+      font: 800 1.15rem var(--font-heading);
+      letter-spacing: -.01em;
+      text-decoration: none;
+    }
+
+    .header-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .25rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .header-nav a {
+      display: inline-block;
+      padding: .5rem .8rem;
+      border-radius: 6px;
+      font-size: .95rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .header-nav a:hover {
+      background: var(--surface);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* Decorative stripe under the header */
+.tapa {
+  width: 100%;
+  height: 30px;                    /* matches Banner.png's real height in pixels */
+  background-image: url("Banner.png");
+  background-size: auto;           /* original size, no stretching */
+  background-repeat: repeat-x;     /* copies sit side by side, left to right */
+  background-position: left top;
+  opacity: .85;
+}
+
+    /* ==========================================================
+       4. HERO SECTION
+       Heading, introduction, event facts, buttons and image.
+       ========================================================== */
+    .hero {
+      padding: clamp(2.5rem, 7vw, 5.5rem) 0 clamp(2rem, 5vw, 4rem);
+      background: radial-gradient(55rem 26rem at 90% -10%, rgba(70, 170, 210, .2), transparent 65%);
+    }
+
+    .hero-inner {
+      width: min(var(--page-width), 100% - 2.5rem);
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      margin: 0 0 1rem;
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .hero-title {
+      margin: 0 0 1.25rem;
+      font: 800 clamp(2.4rem, 6vw, 4.4rem)/1.04 var(--font-heading);
+      letter-spacing: -.02em;
+    }
+    .hero-subtitle {
+      display: block;
+      margin-top: .5rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0;
+      color: var(--primary);
+    }
+
+    .hero-intro {
+      max-width: 30rem;
+      margin: 0 0 1rem;
+      font-size: 1.2rem;
+      color: var(--muted);
+    }
+
+    .hero-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem 1.5rem;
+      margin: 0 0 2rem;
+      padding: 0;
+      list-style: none;
+      font-weight: 500;
+    }
+    .hero-facts li {
+      padding-left: 1rem;
+      border-left: 3px solid var(--accent);
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+    }
+
+    .hero-button,
+    .hero-button-outline {
+      display: inline-block;
+      padding: .85rem 1.5rem;
+      border: 2px solid var(--primary);
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform .25s, background .25s, color .25s;
+    }
+    .hero-button { background: var(--primary); color: var(--on-primary); }
+    .hero-button-outline { background: transparent; color: var(--primary); }
+    .hero-button:hover { background: transparent; color: var(--primary); transform: translateY(-2px); }
+    .hero-button-outline:hover { background: var(--primary); color: var(--on-primary); transform: translateY(-2px); }
+
+    .hero-image {
+      display: block;
+      width: 120%;
+      height: 500px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+
+
+    /* ==========================================================
+       5. ACTIVITIES SECTION
+       ========================================================== */
+    .activities {
+      padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+    }
+
+    .activities-inner {
+      width: min(var(--page-width), 100% - 2.5rem);
+      margin-inline: auto;
+    }
+
+    .activities-title {
+      margin: 0 0 .75rem;
+      font: 800 clamp(1.8rem, 4vw, 2.6rem)/1.1 var(--font-heading);
+      letter-spacing: -.015em;
+    }
+
+    .activities-lead {
+      max-width: 40rem;
+      margin: 0 0 2.25rem;
+      color: var(--muted);
+    }
+
+    .activity-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: activity;
+    }
+
+    .activity {
+      padding: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--primary);
+      border-radius: 4px 4px 10px 10px;
+      counter-increment: activity;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .activity:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px -16px rgba(10, 70, 100, .4);
+    }
+    .activity::before {
+      content: "0" counter(activity);   /* the 01, 02, 03 numbers */
+      display: block;
+      margin-bottom: .5rem;
+      font: 800 1.1rem var(--font-heading);
+      color: var(--accent);
+    }
+    .activity-title { margin: 0 0 .6rem; font: 600 1.35rem/1.2 var(--font-heading); }
+    .activity-text { margin: 0; color: var(--muted); }
+    .activity-where { margin: 1rem 0 0; font-size: .9rem; font-weight: 600; }
+
+
+    /* ==========================================================
+       6. PROGRAMME SECTION
+       Filter buttons and the timeline.
+       ========================================================== */
+    .programme {
+      padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+      background: var(--surface);
+      border-block: 1px solid var(--line);
+    }
+    .programme:focus { outline: none; }   /* focus is moved here by the jump link */
+
+    .programme-inner {
+      width: min(var(--page-width), 100% - 2.5rem);
+      margin-inline: auto;
+    }
+
+    .programme-title {
+      margin: 0 0 .75rem;
+      font: 800 clamp(1.8rem, 4vw, 2.6rem)/1.1 var(--font-heading);
+      letter-spacing: -.015em;
+    }
+
+    .programme-lead {
+      max-width: 40rem;
+      margin: 0 0 2.25rem;
+      color: var(--muted);
+    }
+
+    .programme-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin: 0 0 1.75rem;
+    }
+    .programme-filters button {
+      padding: .55rem 1rem;
+      border: 1.5px solid var(--primary);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink);
+      font: 500 .95rem var(--font-body);
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    .programme-filters button:not([aria-pressed="true"]):hover { background: rgba(70, 170, 210, .18); }
+    .programme-filters button[aria-pressed="true"] { background: var(--primary); color: var(--on-primary); }
+
+    .timeline {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-left: 3px solid var(--line);
+    }
+    .timeline li {
+      position: relative;
+      display: grid;
+      grid-template-columns: 7rem 1fr;
+      gap: 1rem;
+      padding: 1rem 0 1rem 1.5rem;
+      animation: rise .5s both;
+    }
+    .timeline li[hidden] { display: none; }
+    .timeline li::before {   /* the dot on the line */
+      content: "";
+      position: absolute;
+      left: -9px;
+      top: 1.45rem;
+      width: 15px;
+      height: 15px;
+      border: 3px solid var(--accent);
+      border-radius: 50%;
+      background: var(--bg);
+    }
+    .timeline time { font-weight: 600; font-variant-numeric: tabular-nums; }
+    .timeline h3 { margin: 0; font: 600 1.15rem/1.3 var(--font-body); }
+    .timeline p { margin: .15rem 0 0; font-size: .95rem; color: var(--muted); }
+    .timeline-tag {
+      display: inline-block;
+      margin-bottom: .15rem;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .programme-count { margin: 1.25rem 0 0; font-size: .9rem; color: var(--muted); }
+
+
+    /* ==========================================================
+       7. FOOTER
+       ========================================================== */
+    .site-footer {
+      padding: 2rem 0;
+      font-size: .92rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      width: min(var(--page-width), 100% - 2.5rem);
+      margin-inline: auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer-top-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--surface);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+
+    /* ==========================================================
+       8. FLOATING BACK-TO-TOP BUTTON
+       Hidden until you scroll down (see the script at the bottom).
+       ========================================================== */
+    .back-to-top {
+      position: fixed;
+      right: max(1rem, env(safe-area-inset-right));
+      bottom: max(1rem, env(safe-area-inset-bottom));
+      display: grid;
+      place-items: center;
+      width: 3rem;
+      height: 3rem;
+      border: 0;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--on-primary);
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity .3s, transform .3s;
+    }
+    .back-to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+    .back-to-top svg {
+      width: 1.3rem;
+      height: 1.3rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+
+    /* ==========================================================
+       9. ANIMATIONS
+       ========================================================== */
+    @keyframes rise { from { opacity: 0; transform: translateY(24px); } }
+    @keyframes grow { from { transform: scaleX(0); } }
+
+    /* Hero text and image fade up when the page loads */
+    .hero-text  { animation: rise .9s cubic-bezier(.2, .7, .2, 1) both; }
+    .hero-image { animation: rise .9s cubic-bezier(.2, .7, .2, 1) .15s both; }
+
+    /* Scroll-driven effects (Chrome and Edge; other browsers simply skip them) */
+    @supports (animation-timeline: view()) {
+      .activity { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 45%; }
+    }
+
+    /* Accessibility: no animation for people who ask for reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::after { transition: none !important; animation: none !important; }
+    }
+
+
+    /* ==========================================================
+       10. RESPONSIVE DESIGN
+       Layout changes for tablets and phones.
+       ========================================================== */
+    @media (max-width: 860px) {
+      .header-inner { flex-direction: column; align-items: flex-start; gap: 0; padding-block: .5rem; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .activity-list { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 520px) {
+      .timeline li { grid-template-columns: 1fr; gap: .2rem; }
+    }
+  </style>
+</head>
+
+
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+    <div class="header-inner">
+      <a class="header-logo" href="#top">Viti Showcase</a>
+      <nav class="header-nav" aria-label="Page sections">
+        <ul>
+          <li><a href="#top">Home</a></li>
+          <li><a href="#activities">Activities</a></li>
+          <li><a href="#programme">Schedule</a></li>
+        </ul>
+      </nav>
+    </div>
+</header>
+  <div class="tapa" aria-hidden="true"></div>
+
+
+  <main id="main">
+
+    <!-- HERO: heading, short introduction, event facts, buttons and the one image -->
+    <section class="hero" id="top">
+      <div class="hero-inner">
+
+        <div class="hero-text">
+          <p class="hero-kicker">Saturday 5 December 2026 · Vuda Community Hall</p>
+          <h2 class="hero-title">
+            Viti Showcase and Skills Fair 2026
+            <span class="hero-subtitle">Show what you can make, build and do</span>
+          </h2>
+          <p class="hero-intro">
+            A one-day event for students across the Western Division. Bring something you made, built or figured out and share it with teachers, families and local workers. Entry is free and anyone can join in.
+          </p>
+          <ul class="hero-facts">
+            <li>Free entry</li>
+            <li>8:30 am – 3:30 pm</li>
+            <li>All school years</li>
+          </ul>
+          <div class="hero-buttons">
+            <a class="hero-button" href="#programme">See the schedule</a>
+            <a class="hero-button-outline" href="#activities">See the activities</a>
+          </div>
+        </div>
+
+        <!-- THE ONE IMAGE (change the alt text so it describes your picture) -->
+        <img class="hero-image" src="photo.jpg" alt="Illustration for the Viti Showcase and Skills Fair">
+
+      </div>
+    </section>
+
+
+    <!-- THREE ACTIVITIES -->
+    <section class="activities" id="activities" aria-labelledby="activities-title">
+      <div class="activities-inner">
+        <h2 class="activities-title" id="activities-title">Things you can do</h2>
+        <p class="activities-lead">Pick one or try all three. Students run them with help from teachers and local workers.</p>
+
+        <ul class="activity-list">
+          <li class="activity">
+            <h3 class="activity-title">AutoCAD Design</h3>
+            <p class="activity-text">Show 2D and 3D drawings you made on the computer—like house plans, machine parts or room layouts. Explain how you measured and shaped your design while visitors take a look.</p>
+            <p class="activity-where">Main hall · 9:30 am – 12:00 pm</p>
+          </li>
+          <li class="activity">
+            <h3 class="activity-title">Web Design</h3>
+            <p class="activity-text">Set up a laptop or tablet with a website or page you built from scratch. Walk visitors through your layout, colours, buttons and how it works on different screens.</p>
+            <p class="activity-where">Verandah and courtyard · all day</p>
+          </li>
+          <li class="activity">
+            <h3 class="activity-title">Recipe Development</h3>
+            <p class="activity-text">Share a new dish, snack or drink you created using local or everyday ingredients. Explain what you changed while testing the recipe and let judges or visitors try a sample.</p>
+            <p class="activity-where">Meeting room · 1:00 pm – 3:00 pm</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- SCHEDULE: the jump-link buttons scroll here because of id="programme" -->
+    <section class="programme" id="programme" tabindex="-1" aria-labelledby="programme-title">
+      <div class="programme-inner">
+        <h2 class="programme-title" id="programme-title">Schedule</h2>
+        <p class="programme-lead">Saturday 5 December 2026. Tap a filter to see just one activity.</p>
+
+        <!-- Filter buttons (data-f says which items each button shows) -->
+        <div class="programme-filters" role="group" aria-label="Filter schedule">
+          <button type="button" data-f="all" aria-pressed="true">All</button>
+          <button type="button" data-f="cad" aria-pressed="false">AutoCAD Design</button>
+          <button type="button" data-f="web" aria-pressed="false">Web Design</button>
+          <button type="button" data-f="recipe" aria-pressed="false">Recipe Development</button>
+        </div>
+
+        <!-- Timeline (data-t says which filter each item belongs to) -->
+        <ol class="timeline" id="timeline">
+          <li data-t="all"><time datetime="08:30">8:30 am</time><div><h3>Arrive and register</h3><p>Get your name tag, table spot or screen space.</p></div></li>
+          <li data-t="all"><time datetime="09:00">9:00 am</time><div><h3>Welcome and start</h3><p>Traditional welcome from the host school, followed by a short opening talk.</p></div></li>
+          <li data-t="cad"><time datetime="09:30">9:30 am</time><div><span class="timeline-tag">AutoCAD Design</span><h3>AutoCAD Design rounds start</h3><p>Three short show-and-tell rounds in the morning, 20 minutes each.</p></div></li>
+          <li data-t="web"><time datetime="10:00">10:00 am</time><div><span class="timeline-tag">Web Design</span><h3>Web Design stations open</h3><p>Test out student sites with visitors and read their feedback.</p></div></li>
+          <li data-t="all"><time datetime="12:00">12:00 pm</time><div><h3>Lunch break</h3><p>Food stalls run by home economics students.</p></div></li>
+          <li data-t="recipe"><time datetime="13:00">1:00 pm</time><div><span class="timeline-tag">Recipe Development</span><h3>Recipe Development tasting &amp; talk</h3><p>Book a 15-minute spot at the door to share your recipe and ideas.</p></div></li>
+          <li data-t="web"><time datetime="14:30">2:30 pm</time><div><span class="timeline-tag">Web Design</span><h3>Favourite entry vote closes</h3><p>Put your vote in before leaving the courtyard.</p></div></li>
+          <li data-t="all"><time datetime="15:00">3:00 pm</time><div><h3>Awards and closing</h3><p>Shout-outs for effort, teamwork and good ideas, then wrap-up.</p></div></li>
+        </ol>
+
+        <p class="programme-count" id="programme-count" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Viti Showcase and Skills Fair 2026 · Made-up event for a school design project.</p>
+      <a class="footer-top-button" href="#top" aria-label="Back to top">↑</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+
+      // ---- PROGRAMME FILTER ----
+      // Clicking a filter button shows only the matching timeline items and updates the count.
+      var filterButtons = document.querySelectorAll('.programme-filters button');
+      var timelineItems = document.querySelectorAll('#timeline li');
+      var countText = document.getElementById('programme-count');
+
+      function applyFilter(filter) {
+        var shown = 0;
+
+        timelineItems.forEach(function (item) {
+          var visible = filter === 'all' || item.dataset.t === 'all' || item.dataset.t === filter;
+          item.hidden = !visible;
+          if (visible) shown++;
+        });
+
+        filterButtons.forEach(function (button) {
+          button.setAttribute('aria-pressed', button.dataset.f === filter ? 'true' : 'false');
+        });
+
+        countText.textContent = 'Showing ' + shown + ' of ' + timelineItems.length + ' schedule items.';
+      }
+
+      filterButtons.forEach(function (button) {
+        button.addEventListener('click', function () { applyFilter(button.dataset.f); });
+      });
+      applyFilter('all');
+
+
+      // ---- JUMP LINK FOCUS ----
+      // After a "programme" link scrolls the page, move keyboard focus to the programme section.
+      document.querySelectorAll('a[href="#programme"]').forEach(function (link) {
+        link.addEventListener('click', function () {
+          setTimeout(function () {
+            document.getElementById('programme').focus({ preventScroll: true });
+          }, 50);
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
