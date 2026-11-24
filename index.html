@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Viti Showcase and Skills Fair 2026</title>
-  <meta name="description" content="A one-day fair where students show what they can make, build and solve.">
-
-  <style>
+ <style>
     :root {
       --bg: #eef4f7;          /* page background */
       --surface: #f9fcfd;     /* cards and the programme section */
@@ -409,61 +400,7 @@
     }
 
 
-    /* ==========================================================
-       8. FLOATING BACK-TO-TOP BUTTON
-       Hidden until you scroll down (see the script at the bottom).
-       ========================================================== */
-    .back-to-top {
-      position: fixed;
-      right: max(1rem, env(safe-area-inset-right));
-      bottom: max(1rem, env(safe-area-inset-bottom));
-      display: grid;
-      place-items: center;
-      width: 3rem;
-      height: 3rem;
-      border: 0;
-      border-radius: 50%;
-      background: var(--primary);
-      color: var(--on-primary);
-      cursor: pointer;
-      opacity: 0;
-      transform: translateY(12px);
-      pointer-events: none;
-      transition: opacity .3s, transform .3s;
-    }
-    .back-to-top.show { opacity: 1; transform: none; pointer-events: auto; }
-    .back-to-top svg {
-      width: 1.3rem;
-      height: 1.3rem;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2.2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-
-    /* ==========================================================
-       9. ANIMATIONS
-       ========================================================== */
-    @keyframes rise { from { opacity: 0; transform: translateY(24px); } }
-    @keyframes grow { from { transform: scaleX(0); } }
-
-    /* Hero text and image fade up when the page loads */
-    .hero-text  { animation: rise .9s cubic-bezier(.2, .7, .2, 1) both; }
-    .hero-image { animation: rise .9s cubic-bezier(.2, .7, .2, 1) .15s both; }
-
-    /* Scroll-driven effects (Chrome and Edge; other browsers simply skip them) */
-    @supports (animation-timeline: view()) {
-      .activity { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 45%; }
-    }
-
-    /* Accessibility: no animation for people who ask for reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::after { transition: none !important; animation: none !important; }
-    }
-
+    
 
     /* ==========================================================
        10. RESPONSIVE DESIGN
@@ -545,16 +482,6 @@
             <p class="activity-text">Show 2D and 3D drawings you made on the computer—like house plans, machine parts or room layouts. Explain how you measured and shaped your design while visitors take a look.</p>
             <p class="activity-where">Main hall · 9:30 am – 12:00 pm</p>
           </li>
-          <li class="activity">
-            <h3 class="activity-title">Web Design</h3>
-            <p class="activity-text">Set up a laptop or tablet with a website or page you built from scratch. Walk visitors through your layout, colours, buttons and how it works on different screens.</p>
-            <p class="activity-where">Verandah and courtyard · all day</p>
-          </li>
-          <li class="activity">
-            <h3 class="activity-title">Recipe Development</h3>
-            <p class="activity-text">Share a new dish, snack or drink you created using local or everyday ingredients. Explain what you changed while testing the recipe and let judges or visitors try a sample.</p>
-            <p class="activity-where">Meeting room · 1:00 pm – 3:00 pm</p>
-          </li>
         </ul>
       </div>
     </section>
@@ -567,22 +494,13 @@
         <p class="programme-lead">Saturday 5 December 2026. Tap a filter to see just one activity.</p>
 
         <!-- Filter buttons (data-f says which items each button shows) -->
-        <div class="programme-filters" role="group" aria-label="Filter schedule">
-          <button type="button" data-f="all" aria-pressed="true">All</button>
-          <button type="button" data-f="cad" aria-pressed="false">AutoCAD Design</button>
-          <button type="button" data-f="web" aria-pressed="false">Web Design</button>
+        >
           <button type="button" data-f="recipe" aria-pressed="false">Recipe Development</button>
         </div>
 
         <!-- Timeline (data-t says which filter each item belongs to) -->
         <ol class="timeline" id="timeline">
-          <li data-t="all"><time datetime="08:30">8:30 am</time><div><h3>Arrive and register</h3><p>Get your name tag, table spot or screen space.</p></div></li>
-          <li data-t="all"><time datetime="09:00">9:00 am</time><div><h3>Welcome and start</h3><p>Traditional welcome from the host school, followed by a short opening talk.</p></div></li>
-          <li data-t="cad"><time datetime="09:30">9:30 am</time><div><span class="timeline-tag">AutoCAD Design</span><h3>AutoCAD Design rounds start</h3><p>Three short show-and-tell rounds in the morning, 20 minutes each.</p></div></li>
-          <li data-t="web"><time datetime="10:00">10:00 am</time><div><span class="timeline-tag">Web Design</span><h3>Web Design stations open</h3><p>Test out student sites with visitors and read their feedback.</p></div></li>
-          <li data-t="all"><time datetime="12:00">12:00 pm</time><div><h3>Lunch break</h3><p>Food stalls run by home economics students.</p></div></li>
-          <li data-t="recipe"><time datetime="13:00">1:00 pm</time><div><span class="timeline-tag">Recipe Development</span><h3>Recipe Development tasting &amp; talk</h3><p>Book a 15-minute spot at the door to share your recipe and ideas.</p></div></li>
-          <li data-t="web"><time datetime="14:30">2:30 pm</time><div><span class="timeline-tag">Web Design</span><h3>Favourite entry vote closes</h3><p>Put your vote in before leaving the courtyard.</p></div></li>
+    
           <li data-t="all"><time datetime="15:00">3:00 pm</time><div><h3>Awards and closing</h3><p>Shout-outs for effort, teamwork and good ideas, then wrap-up.</p></div></li>
         </ol>
 
